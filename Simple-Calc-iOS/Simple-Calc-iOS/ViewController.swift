@@ -11,16 +11,39 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var calcDisplay: UILabel!
-    var op: [String?] = []
+    var args: [String] = []
+    let operators = ["+", "-", "*", "/", "%", "count", "avg", "fact"]
+
     @IBAction func numBtnClick(_ sender: UIButton) {
         if numberIsValid(numOfDigit(displayInt()) + 1) {
             calcDisplay.text = "\(displayInt() * 10 + sender.tag)"
         }
     }
     
-    @IBAction func simpleOpClick(_ sender: UIButton) {
-        op.append(sender.titleLabel!.text!)
+    @IBAction func opClick(_ sender: UIButton) {
+        args.append(calcDisplay.text!)
+        args.append(sender.titleLabel!.text!)
+        if sender.titleLabel!.text! == "fact" {
+            calcDisplay.text = "\(calc())"
+            args = []
+        } else {
+            calcDisplay.text = "0"
+        }
     }
+    
+    @IBAction func calculate(_: UIButton) {
+        if (args.count > 0) {
+            args.append(calcDisplay.text!)
+            calcDisplay.text = "\(calc())"
+            args = []
+        }
+    }
+    
+    @IBAction func clearDisplay(_ sender: Any) {
+        calcDisplay.text = "0"
+        args = []
+    }
+    
     private func displayInt() -> Int{
         return Int(calcDisplay.text!)!
     }
@@ -37,37 +60,52 @@ class ViewController: UIViewController {
         return num < numOfDigit(Int.max)
     }
     
-//    private func simpleCalc(_ sender: UIButton) -> Int {
-//        let operators = ["+", "-", "*", "/", "%", "count", "avg", "fact"];
-//                let ope = sender.titleLabel!
-//                switch ope {
-//                case operators[0]:
-//                    result = Int(args[opeIndex! - 1])! + Int(args[opeIndex! + 1])!
-//                case operators[1]:
-//                    result = Int(args[opeIndex! - 1])! - Int(args[opeIndex! + 1])!
-//                case operators[2]:
-//                    result = Int(args[opeIndex! - 1])! * Int(args[opeIndex! + 1])!
-//                case operators[3]:
-//                    result = Int(args[opeIndex! - 1])! / Int(args[opeIndex! + 1])!
-//                case operators[4]:
-//                    result = Int(args[opeIndex! - 1])! % Int(args[opeIndex! + 1])!
-//                case operators[5]:
-//                    result = args.count - 1
-//                case operators[6]:
-//                    if args.count != 1 {
-//                        var sum = 0
-//                        for i in 0...args.count - 2 {
-//                            sum += Int(args[i])!
-//                        }
-//                        result = sum / (args.count - 1)
-//                    }
-//                default:
-//                    if args.count == 2 {
-//                        result = fact(Int(args[0])!)
-//                    }
-//                }
-//    }
+    private func calc() -> Int {
+        var result = Int(args[0])!
+        var elementIndex = 0
+        for element in args {
+            if operators.contains(element) {
+                switch element {
+                case operators[0]:
+                    result += Int(args[elementIndex + 1])!
+                case operators[1]:
+                    result -= Int(args[elementIndex + 1])!
+                case operators[2]:
+                    result *= Int(args[elementIndex + 1])!
+                case operators[3]:
+                    if Int(args[elementIndex + 1])! != 0 {
+                        result /= Int(args[elementIndex + 1])!
+                    }
+                case operators[4]:
+                    result %= Int(args[elementIndex + 1])!
+                case operators[5]:
+                    result = args.count - args.count / 2
+                case operators[6]:
+                    result += Int(args[elementIndex + 1])!
+                    if elementIndex == args.lastIndex(of: element)  {
+                        result = result / ((args.count - 1) / 2 + 1)
+                    }
+                default:
+                    if (Int(args[0])! < 26) {
+                        result = fact(Int(args[0])!)
+                    } else {
+                        calcDisplay.text = "0"
+                    }
+                }
+            }
+            elementIndex += 1
+        }
+        return result
+    }
     
+    private func fact(_ num: Int) -> Int {
+        switch num {
+        case 0:
+            return 1
+        default:
+            return num * fact(num - 1)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
