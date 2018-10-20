@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "01F6D9922176C1510080D4D8"
-               BuildableName = "Simple-Calc-iOS.app"
-               BlueprintName = "Simple-Calc-iOS"
-               ReferencedContainer = "container:Simple-Calc-iOS.xcodeproj">
+               BuildableName = "Simple-Calc-iOS2.app"
+               BlueprintName = "Simple-Calc-iOS2"
+               ReferencedContainer = "container:Simple-Calc-iOS2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "01F6D9A62176C1520080D4D8"
-               BuildableName = "Simple-Calc-iOSTests.xctest"
-               BlueprintName = "Simple-Calc-iOSTests"
-               ReferencedContainer = "container:Simple-Calc-iOS.xcodeproj">
+               BuildableName = "Simple-Calc-iOS2Tests.xctest"
+               BlueprintName = "Simple-Calc-iOS2Tests"
+               ReferencedContainer = "container:Simple-Calc-iOS2.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "01F6D9B12176C1520080D4D8"
-               BuildableName = "Simple-Calc-iOSUITests.xctest"
-               BlueprintName = "Simple-Calc-iOSUITests"
-               ReferencedContainer = "container:Simple-Calc-iOS.xcodeproj">
+               BuildableName = "Simple-Calc-iOS2UITests.xctest"
+               BlueprintName = "Simple-Calc-iOS2UITests"
+               ReferencedContainer = "container:Simple-Calc-iOS2.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "01F6D9922176C1510080D4D8"
-            BuildableName = "Simple-Calc-iOS.app"
-            BlueprintName = "Simple-Calc-iOS"
-            ReferencedContainer = "container:Simple-Calc-iOS.xcodeproj">
+            BuildableName = "Simple-Calc-iOS2.app"
+            BlueprintName = "Simple-Calc-iOS2"
+            ReferencedContainer = "container:Simple-Calc-iOS2.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "01F6D9922176C1510080D4D8"
-            BuildableName = "Simple-Calc-iOS.app"
-            BlueprintName = "Simple-Calc-iOS"
-            ReferencedContainer = "container:Simple-Calc-iOS.xcodeproj">
+            BuildableName = "Simple-Calc-iOS2.app"
+            BlueprintName = "Simple-Calc-iOS2"
+            ReferencedContainer = "container:Simple-Calc-iOS2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "01F6D9922176C1510080D4D8"
-            BuildableName = "Simple-Calc-iOS.app"
-            BlueprintName = "Simple-Calc-iOS"
-            ReferencedContainer = "container:Simple-Calc-iOS.xcodeproj">
+            BuildableName = "Simple-Calc-iOS2.app"
+            BlueprintName = "Simple-Calc-iOS2"
+            ReferencedContainer = "container:Simple-Calc-iOS2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

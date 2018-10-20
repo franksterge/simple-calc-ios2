@@ -11,9 +11,10 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var calcDisplay: UILabel!
-    var args: [String] = []
-    let operators = ["+", "-", "*", "/", "%", "count", "avg", "fact"]
-
+    @IBOutlet weak var record: UILabel!
+    var operators = calcData.operators
+    var args = calcData.args
+    var currentRecord = ""
     @IBAction func numBtnClick(_ sender: UIButton) {
         if numberIsValid(numOfDigit(displayInt()) + 1) {
             calcDisplay.text = "\(displayInt() * 10 + sender.tag)"
@@ -23,20 +24,31 @@ class ViewController: UIViewController {
     @IBAction func opClick(_ sender: UIButton) {
         args.append(calcDisplay.text!)
         args.append(sender.titleLabel!.text!)
+        currentRecord = "\(currentRecord)\(calcDisplay.text!)"
         if sender.titleLabel!.text! == "fact" {
             calcDisplay.text = "\(calc())"
+            currentRecord = "\(currentRecord) \(sender.titleLabel!.text!) = \(calcDisplay.text!)"
+            calcData.calcRecord.append(currentRecord)
+            record.text! = "\(currentRecord)\n\(record.text!)"
             args = []
+            currentRecord = ""
         } else {
-            calcDisplay.text = "0"
+            currentRecord = "\(currentRecord) \(sender.titleLabel!.text!) "
         }
+        calcDisplay.text! = "0"
+
     }
     
     @IBAction func calculate(_: UIButton) {
-        if (args.count > 0) {
-            args.append(calcDisplay.text!)
-            calcDisplay.text = "\(calc())"
-            args = []
-        }
+        args.append(calcDisplay.text!)
+        currentRecord = "\(currentRecord)\(calcDisplay.text!) "
+        calcDisplay.text! = "\(calc())"
+        currentRecord = "\(currentRecord) = \(calcDisplay.text!)"
+        record.text! = "\(currentRecord)\n\(record.text!)"
+        calcData.calcRecord.append(currentRecord)
+        currentRecord = ""
+        args = []
+        calcDisplay.text = "0"
     }
     
     @IBAction func clearDisplay(_ sender: Any) {
@@ -77,7 +89,9 @@ class ViewController: UIViewController {
                         result /= Int(args[elementIndex + 1])!
                     }
                 case operators[4]:
-                    result %= Int(args[elementIndex + 1])!
+                    if Int(args[elementIndex + 1])! != 0 {
+                        result %= Int(args[elementIndex + 1])!
+                    }
                 case operators[5]:
                     result = args.count - args.count / 2
                 case operators[6]:
@@ -106,12 +120,11 @@ class ViewController: UIViewController {
             return num * fact(num - 1)
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        record.text! = "A brief history can be viewed here"
     }
-
-
 }
 
