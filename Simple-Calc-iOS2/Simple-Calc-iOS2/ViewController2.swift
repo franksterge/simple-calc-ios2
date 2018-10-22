@@ -24,10 +24,10 @@ class ViewController2: UIViewController {
             record.frame.origin.y = CGFloat(i * Int(record.frame.size.height))
             records.frame.size.height += record.frame.size.height
             records.addSubview(record)
+//            NSLog("\( records.frame.size.height)")
             i += 1
         }
         sv.contentSize.height = records.frame.size.height
-        
         // Do any additional setup after loading the view.
     }
     
