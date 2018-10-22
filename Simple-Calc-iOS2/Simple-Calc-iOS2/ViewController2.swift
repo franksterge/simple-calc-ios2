@@ -9,15 +9,25 @@
 import UIKit
 
 class ViewController2: UIViewController {
-
-    @IBOutlet weak var records: UILabel!
+    
+    @IBOutlet weak var records: UIView!
+    @IBOutlet weak var sv: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var i = 0
         for line in calcData.calcRecord {
-            records.text! = "\(line)\n"//got some problems gotta fix tmr
-        
+            let record:UILabel = UILabel()
+            record.text = line
+            record.textColor = .lightGray
+            record.sizeToFit()
+            record.frame.origin.y = CGFloat(i * Int(record.frame.size.height))
+            records.frame.size.height += record.frame.size.height
+            records.addSubview(record)
+            i += 1
         }
+        sv.contentSize.height = records.frame.size.height
+        
         // Do any additional setup after loading the view.
     }
     

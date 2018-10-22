@@ -41,7 +41,7 @@ class ViewController: UIViewController {
     
     @IBAction func calculate(_: UIButton) {
         args.append(calcDisplay.text!)
-        currentRecord = "\(currentRecord)\(calcDisplay.text!) "
+        currentRecord = "\(currentRecord)\(calcDisplay.text!)"
         calcDisplay.text! = "\(calc())"
         currentRecord = "\(currentRecord) = \(calcDisplay.text!)"
         record.text! = "\(currentRecord)\n\(record.text!)"
